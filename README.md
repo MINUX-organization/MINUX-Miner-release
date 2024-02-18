@@ -75,14 +75,16 @@ Basic interaction between CPU and GPU you can find below in picture. The **faste
 | etchash   | +          | -       | -         | +         | +       | -       |
 
 ## Supported parameters
-| Short name | Name         | Description                                   |
-|------------|--------------|-----------------------------------------------|
-| -a         | --algorithms | Algorithm you want to mine                    |
-| -p         | --pool       | Pool address : stratum+tcp://[domain]:[port]  |
-| -w         | --wallet     | Wallet address where to mine                  |
-| -r         | --worker     | Name of worker in pool                        |
-| -s         | --password   | Pool password to be authorized                |
-| -c         | --cpu-boost  | Enable boost hashrate by CPU device           |
+| Short name | Name             | Description                                   |
+|------------|------------------|-----------------------------------------------|
+| -a         | --algorithms     | Algorithm you want to mine                    |
+| -p         | --pool           | Pool address : stratum+tcp://[domain]:[port]  |
+| -w         | --wallet         | Wallet address where to mine                  |
+| -r         | --worker         | Name of worker in pool                        |
+| -s         | --password       | Pool password to be authorized                |
+| -c         | --cpu-boost      | Enable boost hashrate by CPU device           |
+| -u         | --cuda-disable   | Disable Mining on CUDA (Nvidia) devices       |
+| -l         | --opencl-disable | Disable Mining on OpenCL (AMD) devices        |
 
 ### Example start
 #### Linux
