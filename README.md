@@ -52,6 +52,7 @@ int main()
     return EXIT_SUCCESS;
 }
 ```
+
 ![Threads diagram](./assets/miner_threads.png)
 
 ### CPU Boost
@@ -62,6 +63,7 @@ For example, if you disable CPU boost your time to call, copy, move and paste op
 3. Your CPU Core working in "cold" mode (let's say it is lazy to work)
    
 Basic interaction between CPU and GPU you can find below in picture. The **faster** this interaction is passed the **higher hashrate** you will have
+
 ![Threads diagram](./assets/cpu_boost.drawio.png)
 
 **WARNING:** On startup the hashrate of GPU is really high. You need to wait ~30 minutes before miner stabilize hashrate
