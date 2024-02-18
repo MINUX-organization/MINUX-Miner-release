@@ -89,7 +89,7 @@ Basic interaction between CPU and GPU you can find below in picture. The **faste
 ### Example start
 #### Linux
 ```bash
-./MINUX-Miner -a ethash -p stratum+tcp://etc.2miners.com:1010 -w 0xa7e593bde6b5900262cf94e4d75fb040f7ff4727 -r WORKER -s x --cpu-enable
+./MINUX-Miner -a ethash -p stratum+tcp://etc.2miners.com:1010 -w 0xa7e593bde6b5900262cf94e4d75fb040f7ff4727 -r WORKER -s x --cpu-boost
 ```
 #### Windows
 Coming soon
