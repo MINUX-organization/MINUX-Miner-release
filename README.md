@@ -1,6 +1,7 @@
 # Miner
 - [Miner](#miner)
 	- [How we increase performance](#how-we-increase-performance)
+		- [CPU Boost](#cpu-boost)
 	- [Supported Algorithms and Devices](#supported-algorithms-and-devices)
 	- [Supported parameters](#supported-parameters)
 		- [Example start](#example-start)
@@ -12,6 +13,7 @@
 			- [CUDA and OpenCL](#cuda-and-opencl)
 			- [AMD and Nvidia drivers](#amd-and-nvidia-drivers)
 		- [Windows](#windows-1)
+	- [Contributors and Authors](#contributors-and-authors)
 	- [Coming soon](#coming-soon)
 
 ## How we increase performance
@@ -52,10 +54,23 @@ int main()
 ```
 ![Threads diagram](./assets/miner_threads.png)
 
+### CPU Boost
+You can try to increase your hashrate by **--cpu-boost** parameter. This parameter is used to **overload CPU Cores, mine on them and make working with GPU faster**.
+For example, if you disable CPU boost your time to call, copy, move and paste operations from CPU Core to GPU take more time in reason of:
+1. Your CPU Core has lower frequency
+2. Working GPU thread takes more time to be executed
+3. Your CPU Core working in "cold" mode (let's say it is lazy to work)
+   
+Basic interaction between CPU and GPU you can find below in picture. The **faster** this interaction is passed the **higher hashrate** you will have
+![Threads diagram](./assets/cpu_boost.drawio.png)
+
+**WARNING:** On startup the hashrate of GPU is really high. You need to wait ~30 minutes before miner stabilize hashrate
+
 ## Supported Algorithms and Devices
 | Algorithm | Nvidia GPU | AMD GPU | Intel GPU | Intel CPU | AMD CPU | Mac CPU |
 |-----------|------------|---------|-----------|-----------|---------|---------|
 | ethash    | +          | -       | -         | +         | +       | -       |
+| etchash   | +          | -       | -         | +         | +       | -       |
 
 ## Supported parameters
 | Short name | Name         | Description                                   |
@@ -65,7 +80,7 @@ int main()
 | -w         | --wallet     | Wallet address where to mine                  |
 | -r         | --worker     | Name of worker in pool                        |
 | -s         | --password   | Pool password to be authorized                |
-| -c         | --cpu-enable | Enable mining on CPU device                   |
+| -c         | --cpu-boost  | Enable boost hashrate by CPU device           |
 
 ### Example start
 #### Linux
@@ -102,6 +117,14 @@ sudo amdgpu-install
 ### Windows
 Coming soon
 
+## Contributors and Authors
+This miner is developed by **MINUX** organization. Find us on github: **https://github.com/MINUX-organization**
+If you have questions or suggestions you can contact to us:
+**Telegram:** @gerrfrog @minux_wait_list @minuxos
+**E-Mail:** ghaghal93@gmail.com
+**WEB-Site:** https://minux.pro
+**Github:** https://github.com/GerrFrog
+
 ## Coming soon
 1. OpenCL support (AMD mining)
-2. Etchash, KawPow, ProgPow mining algorithms
+2. KawPow, ProgPow mining algorithms
