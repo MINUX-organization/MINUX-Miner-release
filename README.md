@@ -13,8 +13,10 @@
 			- [CUDA and OpenCL](#cuda-and-opencl)
 			- [AMD and Nvidia drivers](#amd-and-nvidia-drivers)
 		- [Windows](#windows-1)
+		- [HiveOS](#hiveos)
 	- [Contributors and Authors](#contributors-and-authors)
 	- [Coming soon](#coming-soon)
+	- [Link](#link)
 
 ## How we increase performance
 To achive more performance in memory managment **we develop MINUX-Miner on basic C (not C++)**. We use **POSIX threads** in linux as they have more system achivements. For example, you have 1 CPU with 2 Cores, 2 CUDA devices (Nvidia) and 2 OpenCL devices. The main diagram of miner is show below. We sign **for each Core the parallel thread** to make CPU work better. **For each device we sign thread** to make devices for in parallel. **We use basic C sockets to make connection to pool faster**. After all workers are initialized we create channel **to make all threads be able to communicate with each other**. When we got solution from pool we assign new job for each device. We have to calculate hashes and find a nonce parameter (this is solution). Nonce parameter starts with 0 and ends with 18,446,744,073,709,551,615. This is really big and we devide this job between devices. Each device has **personal range of nonce to calculate hashes**. It means each device works independently. For example (nonce range depends on performance of your devices):
@@ -71,25 +73,32 @@ Basic interaction between CPU and GPU you can find below in picture. The **faste
 ## Supported Algorithms and Devices
 | Algorithm | Nvidia GPU | AMD GPU | Intel GPU | Intel CPU | AMD CPU | Mac CPU |
 |-----------|------------|---------|-----------|-----------|---------|---------|
-| ethash    | +          | -       | -         | +         | +       | -       |
-| etchash   | +          | -       | -         | +         | +       | -       |
+| ethash    | +          | +       | -         | +         | +       | -       |
+| etchash   | +          | +       | -         | +         | +       | -       |
+| kawpow    | +          | -       | -         | +         | +       | -       |
 
 ## Supported parameters
-| Short name | Name             | Description                                   |
-|------------|------------------|-----------------------------------------------|
-| -a         | --algorithms     | Algorithm you want to mine                    |
-| -p         | --pool           | Pool address : stratum+tcp://[domain]:[port]  |
-| -w         | --wallet         | Wallet address where to mine                  |
-| -r         | --worker         | Name of worker in pool                        |
-| -s         | --password       | Pool password to be authorized                |
-| -c         | --cpu-boost      | Enable boost hashrate by CPU device           |
-| -u         | --cuda-disable   | Disable Mining on CUDA (Nvidia) devices       |
-| -l         | --opencl-disable | Disable Mining on OpenCL (AMD) devices        |
+| Short name | Name                 | Description                                                              |
+|------------|----------------------|--------------------------------------------------------------------------|
+| -a         | --algorithms         | Algorithm you want to mine                                               |
+| -p         | --pool               | Pool address : stratum+tcp://[domain]:[port]                             |
+| -w         | --wallet             | Wallet address where to mine                                             |
+| -r         | --worker             | Name of worker in pool                                                   |
+| -s         | --password           | Pool password to be authorized                                           |
+| -d         | --devices            | List of Devices IDs to mine on (separated by ',') (default all devices)  |
+| -c         | --cpu-enable         | Enable boost hashrate by CPU device (default is false)                   |
+| -u         | --cuda-enable        | Enable Mining on CUDA (Nvidia) devices (default is false)                |
+| -l         | --opencl-enable      | Enable Mining on OpenCL (AMD) devices (default is false)                 |
+|            | --api-enable         | Enable API binding (default is false)                                    |
+| -l         | --nvidia-use-opencl  | Force Nvidia to use OpenCL except CUDA (default is false)                |
+|            | --config-file        | Path to configuration file for miner                                     |
+|            | --api-host           | Host for API binding (default is 127.0.0.1)                              |
+|            | --api-port           | Port for API binding (default is 10000)                                  |
 
 ### Example start
 #### Linux
 ```bash
-./MINUX-Miner -a ethash -p stratum+tcp://etc.2miners.com:1010 -w 0xa7e593bde6b5900262cf94e4d75fb040f7ff4727 -r WORKER -s x --cpu-boost
+./MINUX-Miner -a ethash -p stratum+tcp://etc.2miners.com:1010 -w 0xa7e593bde6b5900262cf94e4d75fb040f7ff4727 -r WORKER -s x --cpu-enable
 ```
 #### Windows
 Coming soon
@@ -121,6 +130,13 @@ sudo amdgpu-install
 ### Windows
 Coming soon
 
+### HiveOS
+Open console and write a command
+```bash
+
+
+```
+
 ## Contributors and Authors
 This miner is developed by **MINUX** organization. Find us on github: **https://github.com/MINUX-organization**
 If you have questions or suggestions you can contact to us:
@@ -130,5 +146,8 @@ If you have questions or suggestions you can contact to us:
 **Github:** https://github.com/GerrFrog
 
 ## Coming soon
-1. OpenCL support (AMD mining)
-2. KawPow, ProgPow mining algorithms
+1. ProgPow mining algorithms
+
+## Link
+- [Install cuda 11.8](https://developer.nvidia.com/cuda-11-8-0-download-archive?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=22.04&target_type=deb_network)
+- [cuda 11.8 architectures](https://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/)
