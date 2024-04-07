@@ -131,18 +131,24 @@ sudo amdgpu-install
 Coming soon
 
 ### HiveOS
-Open console and write a command
-```bash
+Integrate MINUX-MINER as "Custom miner" in Hive OS
 
+![Threads diagram](./assets/hive.png)
 
-```
 
 ## Contributors and Authors
-This miner is developed by **MINUX** organization. Find us on github: **https://github.com/MINUX-organization**
+This miner is developed by **MINUX** organization. 
+
+Find us on github: **https://github.com/MINUX-organization**
+
 If you have questions or suggestions you can contact to us:
+
 **Telegram:** @gerrfrog @minux_wait_list @minuxos
+
 **E-Mail:** ghaghal93@gmail.com
+
 **WEB-Site:** https://minux.pro
+
 **Github:** https://github.com/GerrFrog
 
 ## Coming soon
@@ -150,4 +156,5 @@ If you have questions or suggestions you can contact to us:
 
 ## Link
 - [Install cuda 11.8](https://developer.nvidia.com/cuda-11-8-0-download-archive?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=22.04&target_type=deb_network)
+- [Install cuda 12.0](https://developer.nvidia.com/cuda-12-0-0-download-archive?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu)
 - [cuda 11.8 architectures](https://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/)
